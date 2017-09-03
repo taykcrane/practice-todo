@@ -15,7 +15,7 @@ class CompletedTodos extends React.Component {
 
 		return(
 			<div className="completed">
-				<p className="show-completed" onClick={this.props.toggleShowCompletedState}>Show Completed Todos?</p>
+				<p className="show-completed" onClick={this.props.toggleShowCompletedState}>Show Completed Concerns?</p>
 				<ul>
 					{completedTodos}
 				</ul>
