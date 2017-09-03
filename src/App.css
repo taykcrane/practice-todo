@@ -1,13 +1,9 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
+.taylor {
   height: 80px;
 }
 
 .App-header {
+  text-align: center;
   background-color: #222;
   height: 150px;
   padding: 20px;
@@ -17,6 +13,22 @@
 .App-intro {
   font-size: large;
 }
+
+.complete {
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+}
+
+.completed {
+  color: #999;
+}
+
+.show-completed {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
