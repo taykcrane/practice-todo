@@ -14,8 +14,8 @@ class App extends Component {
     this.toggleShowCompletedState = this.toggleShowCompletedState.bind(this);
 
     this.state = {
-      todos: [{todo: "So many bugs", owner: "Taylor"}, 
-              {todo: "So little time!", owner: "Sonke"},
+      todos: [{todo: "So many bugs", owner: "Taylor"},
+              {todo: "So little time!", owner: "Sönke"},
               {todo: "Need more asparagus filet", owner: "Matteo"}],
       completedTodos: [{todo: "App keeps crashing", owner: "Joe"}],
       showCompleted: false,
