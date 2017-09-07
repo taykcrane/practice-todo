@@ -18,22 +18,18 @@ class TodoList extends React.Component {
 	}
 
 	render() {
-		var todolist = this.props.todos.map( (item, index) => {
-			return(
-				<li key={index}>
-					<span>{item.todo}  --  </span>
-					<span>{item.owner ? `Owner: ${item.owner}  --  ` : null }</span>
-					<span className="complete" onClick={ () => this.props.completeTodo(index) }>
-						Done!
-					</span>
-				</li>
-			)
-		})
-
 		return (
 			<div>
 				<ul>
-					{todolist}
+					{this.props.todos.map( (item, index) =>
+						<li key={index}>
+							<span>{item.todo}  --  </span>
+							<span>{item.owner ? `Owner: ${item.owner}  --  ` : null }</span>
+							<span className="complete" onClick={ () => this.props.completeTodo(index) }>
+								Done!
+							</span>
+						</li>
+					)}
 				</ul>
 				<form>
 					<input placeholder="Type a concern..." ref={newTodo => this.newTodo = newTodo} />
