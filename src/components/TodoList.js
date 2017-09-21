@@ -39,6 +39,7 @@ class TodoList extends React.Component {
             newTodo: "",
             newOwner: ""
         });
+        this.input.focus();
     }
         
     render() {
@@ -56,8 +57,8 @@ class TodoList extends React.Component {
                     )}
                 </ul>
                 <form>
-                    <input placeholder="Type a concern..." onChange={this.handleConcernChange} />
-                    <input placeholder="Assign an owner..." onChange={this.handleOwnerChange} />
+                    <input placeholder="Type a concern..." value={this.state.newTodo} onChange={this.handleConcernChange} ref={ (input) => {this.input = input} } />
+                    <input placeholder="Assign an owner..." value={this.state.newOwner} onChange={this.handleOwnerChange} />
                     <button onClick={this.handleAddTodo}>Add Concern</button>
                 </form>
             </div>
