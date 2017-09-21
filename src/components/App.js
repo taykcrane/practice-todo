@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import taylor from '../taylor.jpg';
 import './App.css';
 import TodoList from "./TodoList.js";
 import CompletedTodos from "./CompletedTodos.js";
 
-class App extends Component {
+
+class App extends React.Component {
   
   constructor() {
     super();
