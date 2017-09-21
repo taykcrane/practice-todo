@@ -61,6 +61,9 @@ class TodoList extends React.Component {
                     <input placeholder="Assign an owner..." value={this.state.newOwner} onChange={this.handleOwnerChange} />
                     <button onClick={this.handleAddTodo}>Add Concern</button>
                 </form>
+                {
+                    true && <p>You must enter a concern first!</p>
+                }
             </div>
         )
     }
