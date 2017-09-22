@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './TodoList.css';
 
 class TodoList extends React.Component {
     constructor() {
@@ -12,13 +13,15 @@ class TodoList extends React.Component {
         this.state = {
             newTodo: "",
             newOwner: "",
+            emptyConcernError: false,
         }
     }
 
     handleConcernChange(event) {
         var newTodo = event.target.value;
         this.setState({
-            newTodo: newTodo
+            newTodo: newTodo,
+            emptyConcernError: false
         });
     }
 
@@ -34,6 +37,13 @@ class TodoList extends React.Component {
         console.log(this.state.newTodo, this.state.newOwner);
         if (this.state.newTodo.length > 0) {
             this.props.addTodo(this.state.newTodo, this.state.newOwner);
+            this.setState({
+                emptyConcernError: false
+            });
+        } else {
+            this.setState({
+                emptyConcernError: true
+            });
         }
         this.setState({
             newTodo: "",
@@ -62,7 +72,7 @@ class TodoList extends React.Component {
                     <button onClick={this.handleAddTodo}>Add Concern</button>
                 </form>
                 {
-                    true && <p>You must enter a concern first!</p>
+                    this.state.emptyConcernError && <p className="emptyConcernError">You must enter a concern first!</p>
                 }
             </div>
         )
