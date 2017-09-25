@@ -9,7 +9,7 @@ class TodoList extends React.Component {
         this.handleConcernChange = this.handleConcernChange.bind(this);
         this.handleOwnerChange = this.handleOwnerChange.bind(this);
         this.handleAddTodo = this.handleAddTodo.bind(this);
-        this.readOrEdit = this.readOrEdit.bind(this);
+        this.renderReadOrEdit = this.renderReadOrEdit.bind(this);
 
         this.state = {
             newTodo: "",
