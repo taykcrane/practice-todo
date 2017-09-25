@@ -14,12 +14,6 @@
   font-size: large;
 }
 
-.complete {
-  text-decoration: underline;
-  color: blue;
-  cursor: pointer;
-}
-
 .completed {
   color: #999;
 }

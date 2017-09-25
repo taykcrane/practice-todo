@@ -1,5 +1,12 @@
+.complete,
+.edit {
+	text-decoration: underline;
+	color: blue;
+	cursor: pointer;
+}
+
 .emptyConcernError {
-  color: red;
-  margin: 0;
-  font-size: .75em;
+	color: red;
+	margin: 0;
+	font-size: 0.75em;
 }

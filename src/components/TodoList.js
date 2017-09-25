@@ -9,13 +9,23 @@ class TodoList extends React.Component {
         this.handleConcernChange = this.handleConcernChange.bind(this);
         this.handleOwnerChange = this.handleOwnerChange.bind(this);
         this.handleAddTodo = this.handleAddTodo.bind(this);
+        this.readOrEdit = this.readOrEdit.bind(this);
 
         this.state = {
             newTodo: "",
             newOwner: "",
             emptyConcernError: false,
+            updatedTodo: "",
+            updatedOwner: "",
         };
     }
+
+    handleEditTodoChange = event => {
+        var updatedTodo = event.target.value;
+        this.setState({
+            updatedTodo: updatedTodo,
+        });
+    };
 
     handleConcernChange(event) {
         var newTodo = event.target.value;
@@ -29,6 +39,16 @@ class TodoList extends React.Component {
         var newOwner = event.target.value;
         this.setState({
             newOwner: newOwner,
+        });
+    }
+
+    handleEditTodo(event, index) {
+        event.preventDefault();
+        var updatedTodo = this.state.updatedTodo;
+        this.props.commitEdit(index, updatedTodo);
+        this.setState({
+            updatedTodo: "",
+            updatedOwner: "",
         });
     }
 
@@ -52,20 +72,44 @@ class TodoList extends React.Component {
         this.input.focus();
     }
 
+    renderReadOrEdit(item, index) {
+        if (item.isEditing == true) {
+            return (
+                <form>
+                    <input value={this.state.updatedTodo} onChange={this.handleEditTodoChange} />
+                    <input defaultValue={item.owner} />
+                    <button onClick={event => this.handleEditTodo(event, index)}>Update concern</button>
+                </form>
+            );
+        } else {
+            return (
+                <div>
+                    <span>{item.todo} -- </span>
+                    <span>{item.owner ? `Owner: ${item.owner}  --  ` : null}</span>
+                    <span className="complete" onClick={() => this.props.completeTodo(index)}>
+                        Done!
+                    </span>
+                    <span> </span>
+                    <span
+                        className="edit"
+                        onClick={() => {
+                            this.props.editTodo(index);
+                            this.setState({
+                                updatedTodo: item.todo,
+                            });
+                        }}
+                    >
+                        (edit)
+                    </span>
+                </div>
+            );
+        }
+    }
+
     render() {
         return (
             <div>
-                <ul>
-                    {this.props.todos.map((item, index) => (
-                        <li key={index}>
-                            <span>{item.todo} -- </span>
-                            <span>{item.owner ? `Owner: ${item.owner}  --  ` : null}</span>
-                            <span className="complete" onClick={() => this.props.completeTodo(index)}>
-                                Done!
-                            </span>
-                        </li>
-                    ))}
-                </ul>
+                <ul>{this.props.todos.map((item, index) => <li key={index}>{this.renderReadOrEdit(item, index)}</li>)}</ul>
                 <form>
                     <input
                         placeholder="Type a concern..."
