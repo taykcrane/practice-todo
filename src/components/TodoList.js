@@ -27,6 +27,13 @@ class TodoList extends React.Component {
         });
     };
 
+    handleEditOwnerChange = event => {
+        var updatedOwner = event.target.value;
+        this.setState({
+            updatedOwner: updatedOwner,
+        });
+    };
+
     handleConcernChange(event) {
         var newTodo = event.target.value;
         this.setState({
@@ -45,12 +52,21 @@ class TodoList extends React.Component {
     handleEditTodo(event, index) {
         event.preventDefault();
         var updatedTodo = this.state.updatedTodo;
-        this.props.commitEdit(index, updatedTodo);
+        var updatedOwner = this.state.updatedOwner;
+        this.props.commitEdit(index, updatedTodo, updatedOwner);
         this.setState({
             updatedTodo: "",
             updatedOwner: "",
         });
     }
+
+    handleEditTodoButtonClick = (item, index) => {
+        this.props.editTodo(index);
+        this.setState({
+            updatedTodo: item.todo,
+            updatedOwner: item.owner,
+        });
+    };
 
     handleAddTodo(event) {
         event.preventDefault();
@@ -77,7 +93,7 @@ class TodoList extends React.Component {
             return (
                 <form>
                     <input value={this.state.updatedTodo} onChange={this.handleEditTodoChange} />
-                    <input defaultValue={item.owner} />
+                    <input value={this.state.updatedOwner} onChange={this.handleEditOwnerChange} />
                     <button onClick={event => this.handleEditTodo(event, index)}>Update concern</button>
                 </form>
             );
@@ -90,15 +106,7 @@ class TodoList extends React.Component {
                         Done!
                     </span>
                     <span> </span>
-                    <span
-                        className="edit"
-                        onClick={() => {
-                            this.props.editTodo(index);
-                            this.setState({
-                                updatedTodo: item.todo,
-                            });
-                        }}
-                    >
+                    <span className="edit" onClick={() => this.handleEditTodoButtonClick(item, index)}>
                         (edit)
                     </span>
                 </div>

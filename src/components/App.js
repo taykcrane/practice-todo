@@ -47,10 +47,11 @@ class App extends React.Component {
     });
   }
 
-  commitEdit = (index, updatedTodo) => {
+  commitEdit = (index, updatedTodo, updatedOwner) => {
     var todos = [...this.state.todos];
     var todo = todos[index];
     todo.todo = updatedTodo;
+    todo.owner = updatedOwner;
     todo.isEditing = false;
 
     this.setState({
