@@ -101,14 +101,16 @@ class TodoList extends React.Component {
             return (
                 <div>
                     <span>{item.todo} -- </span>
-                    <span>{item.owner ? `Owner: ${item.owner}  --  ` : null}</span>
-                    <span className="complete" onClick={() => this.props.completeTodo(index)}>
-                        Done!
-                    </span>
-                    <span> </span>
-                    <span className="edit" onClick={() => this.handleEditTodoButtonClick(item, index)}>
-                        (edit)
-                    </span>
+                    <div className="actions">
+                        <span>{item.owner ? `Owner: ${item.owner}  --  ` : null}</span>
+                        <span className="complete" onClick={() => this.props.completeTodo(index)}>
+                            Done!
+                        </span>
+                        <span> </span>
+                        <span className="edit" onClick={() => this.handleEditTodoButtonClick(item, index)}>
+                            (edit)
+                        </span>
+                    </div>
                 </div>
             );
         }
@@ -117,7 +119,9 @@ class TodoList extends React.Component {
     render() {
         return (
             <div>
-                <ul>{this.props.todos.map((item, index) => <li key={index}>{this.renderReadOrEdit(item, index)}</li>)}</ul>
+                <div className="concerns-list">
+                    <ul>{this.props.todos.map((item, index) => <li key={index}>{this.renderReadOrEdit(item, index)}</li>)}</ul>
+                </div>
                 <form>
                     <input
                         placeholder="Type a concern..."

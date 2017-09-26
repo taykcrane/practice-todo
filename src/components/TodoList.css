@@ -1,3 +1,20 @@
+.concerns-list {
+	border: 1px solid red;
+	display: flex;
+	justify-content: center;
+}
+
+.concerns-list ul {
+	border: 1px solid red;
+	list-style-type: none;
+	width: 90%;
+}
+
+.actions {
+	display: inline-block;
+	border: 1px solid red;
+}
+
 .complete,
 .edit {
 	text-decoration: underline;
