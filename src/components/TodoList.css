@@ -1,25 +1,75 @@
 .concerns-list {
-	border: 1px solid red;
+	/*outline: 1px solid red;*/
 	display: flex;
 	justify-content: center;
 }
 
 .concerns-list ul {
-	border: 1px solid red;
+	/*outline: 1px solid red;*/
 	list-style-type: none;
 	width: 90%;
 }
 
-.actions {
-	display: inline-block;
-	border: 1px solid red;
+.concerns-list li {
+	width: 100%;
+	padding: 10px 0;
+	border-bottom: 1px solid #aaa;
 }
 
-.complete,
-.edit {
-	text-decoration: underline;
-	color: blue;
+.concern-item {
+	display: inline-block;
+	/*outline: 1px solid red;*/
+}
+
+.concern-name {
+	width: 75%;
+	color: #666;
+}
+
+.concern-owner {
+	width: 15%;
+	color: #666;
+}
+
+.concern-complete,
+.concern-edit {
+	width: 5%;
+	text-align: center;
+	color: #aaa;
+}
+
+.concern-complete .fa-circle-thin {
 	cursor: pointer;
+	padding: 0px 20%;
+	transition: color 200ms;
+}
+
+.concern-complete .fa-circle-thin:hover {
+	color: #00ff99;
+}
+
+.concern-transition-enter {
+	opacity: 0.01;
+	max-height: 0;
+}
+
+.concern-transition-enter.concern-transition-enter-active {
+	opacity: 1;
+	max-height: 100px;
+	transition: all 10000ms;
+}
+
+.concern-transition-leave {
+	/*opacity: 1;*/
+	background-color: white;
+	max-height: 100%;
+}
+
+.concern-transition-leave.concern-transition-leave-active {
+	/*opacity: 0.01;*/
+	background-color: red;
+	max-height: 0;
+	transition: all 10000ms;
 }
 
 .emptyConcernError {

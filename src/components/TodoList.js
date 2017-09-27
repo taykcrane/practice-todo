@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { CSSTransitionGroup } from "react-transition-group";
 import "./TodoList.css";
 
 class TodoList extends React.Component {
@@ -100,17 +101,14 @@ class TodoList extends React.Component {
         } else {
             return (
                 <div>
-                    <span>{item.todo} -- </span>
-                    <div className="actions">
-                        <span>{item.owner ? `Owner: ${item.owner}  --  ` : null}</span>
-                        <span className="complete" onClick={() => this.props.completeTodo(index)}>
-                            Done!
-                        </span>
-                        <span> </span>
-                        <span className="edit" onClick={() => this.handleEditTodoButtonClick(item, index)}>
-                            (edit)
-                        </span>
-                    </div>
+                    <span className="concern-item concern-complete">
+                        <span className="fa fa-circle-thin" style={{ fontSize: "14px" }} onClick={() => this.props.completeTodo(index)} />
+                    </span>
+                    <span className="concern-item concern-name">{item.todo}</span>
+                    <span className="concern-item concern-owner">{item.owner ? `Owner: ${item.owner}` : null}</span>
+                    <span className="concern-item concern-edit" onClick={() => this.handleEditTodoButtonClick(item, index)}>
+                        (edit)
+                    </span>
                 </div>
             );
         }
@@ -120,7 +118,14 @@ class TodoList extends React.Component {
         return (
             <div>
                 <div className="concerns-list">
-                    <ul>{this.props.todos.map((item, index) => <li key={index}>{this.renderReadOrEdit(item, index)}</li>)}</ul>
+                    <CSSTransitionGroup
+                        component="ul"
+                        transitionName="concern-transition"
+                        transitionEnterTimeout={10000}
+                        transitionLeaveTimeout={10000}
+                    >
+                        {this.props.todos.map((item, index) => <li key={item.id}>{this.renderReadOrEdit(item, index)}</li>)}
+                    </CSSTransitionGroup>
                 </div>
                 <form>
                     <input
