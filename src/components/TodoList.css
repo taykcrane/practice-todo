@@ -1,32 +1,57 @@
 .concerns-list {
-	/*outline: 1px solid red;*/
 	display: flex;
 	justify-content: center;
+	font-family: sans-serif;
 }
 
 .concerns-list ul {
-	/*outline: 1px solid red;*/
 	list-style-type: none;
 	width: 90%;
 }
 
 .concerns-list li {
 	width: 100%;
-	padding: 10px 0;
 	border-bottom: 1px solid #aaa;
+}
+
+.concern-container {
+	height: 18px;
+	padding: 10px 0;
 }
 
 .concern-item {
 	display: inline-block;
-	/*outline: 1px solid red;*/
 }
 
-.concern-name {
+.edit-concern-container {
+	height: 18px;
+	padding: 10px 0;
+	background-color: #eee;
+	transform: translateY(-1px);
+}
+
+.edit-concern-container form {
+	height: 18px;
+}
+
+.edit-concern-container input,
+.edit-concern-container button {
+	padding: 0;
+	border: none;
+	font-size: 16px;
+	font-family: sans-serif;
+	height: 18px;
+	background-color: #eee;
+}
+
+.concern-name,
+.concern-name-edit {
 	width: 75%;
 	color: #666;
 }
 
-.concern-owner {
+.concern-owner,
+.concern-owner-edit {
 	width: 15%;
 	color: #666;
 }
@@ -36,6 +61,10 @@
 	width: 5%;
 	text-align: center;
 	color: #aaa;
+}
+
+.concern-update-edit {
+	width: 5%;
 }
 
 .concern-complete .fa-circle-thin {
@@ -48,32 +77,73 @@
 	color: #00ff99;
 }
 
-.concern-transition-enter {
-	opacity: 0.01;
-	max-height: 0;
-}
-
-.concern-transition-enter.concern-transition-enter-active {
-	opacity: 1;
-	max-height: 100px;
-	transition: all 10000ms;
-}
-
-.concern-transition-leave {
-	/*opacity: 1;*/
-	background-color: white;
-	max-height: 100%;
-}
-
-.concern-transition-leave.concern-transition-leave-active {
-	/*opacity: 0.01;*/
-	background-color: red;
-	max-height: 0;
-	transition: all 10000ms;
-}
-
 .emptyConcernError {
 	color: red;
 	margin: 0;
 	font-size: 0.75em;
+}
+
+/*Adding and removing concerns transitions*/
+/*Adding and removing concerns transitions*/
+/*Adding and removing concerns transitions*/
+/*Adding and removing concerns transitions*/
+
+.concern-transition-enter {
+	opacity: 0.01;
+	max-height: 0;
+	/*padding: 0 !important;*/
+}
+
+.concern-transition-enter.concern-transition-enter-active {
+	opacity: 1;
+	max-height: 39px;
+	/*padding: 10px 0 !important;*/
+	transition: all 0.25s;
+}
+
+.concern-transition-leave {
+	opacity: 1;
+	max-height: 39px;
+	/*padding: 10px 0 !important;*/
+}
+
+.concern-transition-leave.concern-transition-leave-active {
+	opacity: 0.01;
+	max-height: 0;
+	/*padding: 0 !important;*/
+	transition: max-height 0.25s, padding 0.25s, opacity 0.15s;
+}
+
+/*Add Concern Functionality*/
+/*Add Concern Functionality*/
+/*Add Concern Functionality*/
+/*Add Concern Functionality*/
+
+.add-concern-container {
+	margin-bottom: 1em;
+}
+
+.add-concern-concern,
+.add-concern-owner,
+.add-concern-button {
+	font-size: 16px;
+	border: none;
+	padding: 1em 0;
+}
+
+.add-concern-concern {
+	width: 65%;
+	padding-left: 10%;
+	background-color: #eee;
+}
+
+.add-concern-owner {
+	width: 13%;
+	padding-left: 2%;
+	background-color: #eee;
+}
+
+.add-concern-button {
+	width: 10%;
+	background-color: #ddd;
 }

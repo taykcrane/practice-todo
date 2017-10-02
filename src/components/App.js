@@ -42,6 +42,10 @@ class App extends React.Component {
     console.log("todo is being edited");
 
     var todos = [...this.state.todos];
+    todos.map(item => {
+      item.isEditing = false;
+    });
+
     var todo = todos[index];
     todo.isEditing = true;
 
