@@ -26,6 +26,10 @@ class App extends React.Component {
     };
   }
 
+  componentWillMount() {
+    this.ref = base.syncState();
+  }
+
   addTodo(newTodo, newOwner) {
     var todos = [...this.state.todos];
     var timestamp = Date.now();
