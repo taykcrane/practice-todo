@@ -1,5 +1,6 @@
 import React from "react";
 import taylor from "../taylor.jpg";
+import "../normalize.css";
 import "./App.css";
 import TodoList from "./TodoList.js";
 import CompletedTodos from "./CompletedTodos.js";
@@ -15,9 +16,9 @@ class App extends React.Component {
 
     this.state = {
       todos: [
-        { todo: "So many bugs", owner: "Taylor", isEditing: false },
-        { todo: "So little time!", owner: "Sönke", isEditing: false },
-        { todo: "Need more asparagus filet", owner: "Matteo", isEditing: false },
+        { id: 1, todo: "So many bugs", owner: "Taylor", isEditing: false },
+        { id: 2, todo: "So little time!", owner: "Sönke", isEditing: false },
+        { id: 3, todo: "Need more asparagus filet", owner: "Matteo", isEditing: false },
       ],
       completedTodos: [{ todo: "App keeps crashing", owner: "Joe" }],
       showCompleted: false,
@@ -26,9 +27,11 @@ class App extends React.Component {
 
   addTodo(newTodo, newOwner) {
     var todos = [...this.state.todos];
+    var timestamp = Date.now();
     todos.push({
       todo: newTodo,
       owner: newOwner,
+      id: timestamp,
     });
     this.setState({
       todos: todos,
@@ -39,6 +42,10 @@ class App extends React.Component {
     console.log("todo is being edited");
 
     var todos = [...this.state.todos];
+    todos.map(item => {
+      item.isEditing = false;
+    });
+
     var todo = todos[index];
     todo.isEditing = true;
 

@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { CSSTransitionGroup } from "react-transition-group";
 import "./TodoList.css";
 
 class TodoList extends React.Component {
@@ -66,6 +67,8 @@ class TodoList extends React.Component {
             updatedTodo: item.todo,
             updatedOwner: item.owner,
         });
+
+        setTimeout(() => this.concernFieldInput.focus(), 0);
     };
 
     handleAddTodo(event) {
@@ -89,24 +92,39 @@ class TodoList extends React.Component {
     }
 
     renderReadOrEdit(item, index) {
-        if (item.isEditing == true) {
+        var concernCompleteButton = (
+            <span className="concern-item concern-complete">
+                <span className="fa fa-circle-thin" style={{ fontSize: "14px" }} onClick={() => this.props.completeTodo(index)} />
+            </span>
+        );
+
+        if (item.isEditing) {
             return (
-                <form>
-                    <input value={this.state.updatedTodo} onChange={this.handleEditTodoChange} />
-                    <input value={this.state.updatedOwner} onChange={this.handleEditOwnerChange} />
-                    <button onClick={event => this.handleEditTodo(event, index)}>Update concern</button>
-                </form>
+                <div className="edit-concern-container">
+                    <form>
+                        {concernCompleteButton}
+                        <input
+                            className="concern-name-edit"
+                            value={this.state.updatedTodo}
+                            onChange={this.handleEditTodoChange}
+                            ref={input => {
+                                this.concernFieldInput = input;
+                            }}
+                        />
+                        <input className="concern-owner-edit" value={this.state.updatedOwner} onChange={this.handleEditOwnerChange} />
+                        <button className="concern-update-edit" onClick={event => this.handleEditTodo(event, index)}>
+                            Update
+                        </button>
+                    </form>
+                </div>
             );
         } else {
             return (
-                <div>
-                    <span>{item.todo} -- </span>
-                    <span>{item.owner ? `Owner: ${item.owner}  --  ` : null}</span>
-                    <span className="complete" onClick={() => this.props.completeTodo(index)}>
-                        Done!
-                    </span>
-                    <span> </span>
-                    <span className="edit" onClick={() => this.handleEditTodoButtonClick(item, index)}>
+                <div className="concern-container">
+                    {concernCompleteButton}
+                    <span className="concern-item concern-name">{item.todo}</span>
+                    <span className="concern-item concern-owner">{item.owner ? `Owner: ${item.owner}` : null}</span>
+                    <span className="concern-item concern-edit" onClick={() => this.handleEditTodoButtonClick(item, index)}>
                         (edit)
                     </span>
                 </div>
@@ -117,20 +135,34 @@ class TodoList extends React.Component {
     render() {
         return (
             <div>
-                <ul>{this.props.todos.map((item, index) => <li key={index}>{this.renderReadOrEdit(item, index)}</li>)}</ul>
-                <form>
-                    <input
-                        placeholder="Type a concern..."
-                        value={this.state.newTodo}
-                        onChange={this.handleConcernChange}
-                        ref={input => {
-                            this.input = input;
-                        }}
-                    />
-                    <input placeholder="Assign an owner..." value={this.state.newOwner} onChange={this.handleOwnerChange} />
-                    <button onClick={this.handleAddTodo}>Add Concern</button>
-                </form>
-                {this.state.emptyConcernError && <p className="emptyConcernError">You must enter a concern first!</p>}
+                <div className="add-concern-container">
+                    <form>
+                        <input
+                            className="add-concern-concern"
+                            placeholder="Type a concern..."
+                            value={this.state.newTodo}
+                            onChange={this.handleConcernChange}
+                            ref={input => {
+                                this.input = input;
+                            }}
+                        />
+                        <input
+                            className="add-concern-owner"
+                            placeholder="Assign an owner..."
+                            value={this.state.newOwner}
+                            onChange={this.handleOwnerChange}
+                        />
+                        <button className="add-concern-button" onClick={this.handleAddTodo}>
+                            Add Concern
+                        </button>
+                    </form>
+                    {this.state.emptyConcernError && <p className="emptyConcernError">You must enter a concern first!</p>}
+                </div>
+                <div className="concerns-list">
+                    <CSSTransitionGroup component="ul" transitionName="concern-transition" transitionEnterTimeout={250} transitionLeaveTimeout={250}>
+                        {this.props.todos.map((item, index) => <li key={item.id}>{this.renderReadOrEdit(item, index)}</li>)}
+                    </CSSTransitionGroup>
+                </div>
             </div>
         );
     }
