@@ -1,4 +1,5 @@
 import React from "react";
+import base from "../base.js";
 import taylor from "../taylor.jpg";
 import "../normalize.css";
 import "./App.css";
