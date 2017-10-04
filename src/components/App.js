@@ -27,19 +27,17 @@ class App extends React.Component {
   }
 
   componentWillMount() {
-    this.ref = base.syncState(`/todos/`, {
+    base.syncState(`/todos/`, {
       context: this,
       state: "todos",
       asArray: true,
     });
 
-    // var todos = [...this.state.todos];
-    // var todo = { id: 1, todo: "iniliazedTodo", owner: "Taylor", isEditing: false };
-    // todos.push({ todo });
-
-    // this.setState({
-    //   todos: todos,
-    // });
+    base.syncState(`/completed-todos/`, {
+      context: this,
+      state: "completedTodos",
+      asArray: true,
+    });
   }
 
   addTodo(newTodo, newOwner) {
