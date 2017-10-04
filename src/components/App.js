@@ -59,7 +59,7 @@ class App extends React.Component {
 
     var todos = [...this.state.todos];
     todos.map(item => {
-      item.isEditing = false;
+      return (item.isEditing = false);
     });
 
     var todo = todos[index];
