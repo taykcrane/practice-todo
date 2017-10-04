@@ -27,7 +27,19 @@ class App extends React.Component {
   }
 
   componentWillMount() {
-    this.ref = base.syncState();
+    this.ref = base.syncState(`/todos/`, {
+      context: this,
+      state: "todos",
+      asArray: true,
+    });
+
+    // var todos = [...this.state.todos];
+    // var todo = { id: 1, todo: "iniliazedTodo", owner: "Taylor", isEditing: false };
+    // todos.push({ todo });
+
+    // this.setState({
+    //   todos: todos,
+    // });
   }
 
   addTodo(newTodo, newOwner) {
@@ -37,6 +49,7 @@ class App extends React.Component {
       todo: newTodo,
       owner: newOwner,
       id: timestamp,
+      isEditing: false,
     });
     this.setState({
       todos: todos,
