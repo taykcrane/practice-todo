@@ -1,119 +1,3 @@
-.concerns-list {
-	display: flex;
-	justify-content: center;
-	font-family: sans-serif;
-}
-
-.concerns-list ul {
-	list-style-type: none;
-	width: 90%;
-}
-
-.concerns-list li {
-	width: 100%;
-	border-bottom: 1px solid #aaa;
-}
-
-.concern-container {
-	height: 18px;
-	padding: 10px 0;
-}
-
-.concern-item {
-	display: inline-block;
-}
-
-.edit-concern-container {
-	height: 18px;
-	padding: 10px 0;
-	background-color: #eee;
-	transform: translateY(-1px);
-}
-
-.edit-concern-container form {
-	height: 18px;
-}
-
-.edit-concern-container input,
-.edit-concern-container button {
-	padding: 0;
-	border: none;
-	font-size: 16px;
-	font-family: sans-serif;
-	height: 18px;
-	background-color: #eee;
-}
-
-.concern-name,
-.concern-name-edit {
-	width: 75%;
-	color: #666;
-}
-
-.concern-owner,
-.concern-owner-edit {
-	width: 15%;
-	color: #666;
-}
-
-.concern-complete,
-.concern-edit {
-	width: 5%;
-	text-align: center;
-	color: #aaa;
-}
-
-.concern-update-edit {
-	width: 5%;
-}
-
-.concern-complete .fa-circle-thin {
-	cursor: pointer;
-	padding: 0px 20%;
-	transition: color 200ms;
-}
-
-.concern-complete .fa-circle-thin:hover {
-	color: #00ff99;
-}
-
-.emptyConcernError {
-	color: red;
-	margin: 0;
-	font-size: 0.75em;
-}
-
-/*Adding and removing concerns transitions*/
-/*Adding and removing concerns transitions*/
-/*Adding and removing concerns transitions*/
-/*Adding and removing concerns transitions*/
-
-.concern-transition-enter {
-	opacity: 0.01;
-	max-height: 0;
-	/*padding: 0 !important;*/
-}
-
-.concern-transition-enter.concern-transition-enter-active {
-	opacity: 1;
-	max-height: 39px;
-	/*padding: 10px 0 !important;*/
-	transition: all 0.25s;
-}
-
-.concern-transition-leave {
-	opacity: 1;
-	max-height: 39px;
-	/*padding: 10px 0 !important;*/
-}
-
-.concern-transition-leave.concern-transition-leave-active {
-	opacity: 0.01;
-	max-height: 0;
-	/*padding: 0 !important;*/
-	transition: max-height 0.25s, padding 0.25s, opacity 0.15s;
-}
-
 /*Add Concern Functionality*/
 /*Add Concern Functionality*/
 /*Add Concern Functionality*/
@@ -146,4 +30,132 @@
 .add-concern-button {
 	width: 10%;
 	background-color: #ddd;
+}
+
+// Concern List Functionality
+// Concern List Functionality
+// Concern List Functionality
+// Concern List Functionality
+
+.concerns-list {
+	display: flex;
+	justify-content: center;
+	font-family: sans-serif;
+
+	ul {
+		list-style-type: none;
+		width: 90%;
+	}
+
+	li {
+		width: 100%;
+		border-bottom: 1px solid #aaa;
+	}
+}
+
+.concern-container {
+	height: 18px;
+	padding: 10px 0;
+}
+
+.concern-item {
+	display: inline-block;
+}
+
+.edit-concern-container {
+	height: 18px;
+	padding: 10px 0;
+	background-color: #eee;
+	transform: translateY(-1px);
+
+	form {
+		height: 18px;
+	}
+
+	input,
+	button {
+		padding: 0;
+		border: none;
+		font-size: 16px;
+		font-family: sans-serif;
+		height: 18px;
+		background-color: #eee;
+	}
+}
+
+.concern-name,
+.concern-owner,
+.concern-name-edit,
+.concern-owner-edit {
+	color: #666;
+}
+
+.concern-name,
+.concern-name-edit {
+	width: 75%;
+}
+
+.concern-owner,
+.concern-owner-edit {
+	width: 15%;
+}
+
+.concern-complete {
+	width: 5%;
+}
+
+.concern-complete,
+.concern-edit {
+	text-align: center;
+	color: #aaa;
+}
+
+.concern-edit,
+.concern-update-edit {
+	width: 5%;
+}
+
+.concern-complete {
+	.fa-circle-thin {
+		cursor: pointer;
+		padding: 0px 20%;
+		transition: color 200ms;
+
+		&:hover {
+			color: #00ff99;
+		}
+	}
+}
+
+.emptyConcernError {
+	color: red;
+	margin: 0;
+	font-size: 0.75em;
+}
+
+/*Adding and removing concerns transitions*/
+/*Adding and removing concerns transitions*/
+/*Adding and removing concerns transitions*/
+/*Adding and removing concerns transitions*/
+
+.concern-transition-enter {
+	opacity: 0.01;
+	max-height: 0;
+
+	&.concern-transition-enter-active {
+		opacity: 1;
+		max-height: 39px;
+		transition: all 0.25s;
+	}
+}
+
+.concern-transition-leave {
+	opacity: 1;
+	max-height: 39px;
+
+	&.concern-transition-leave-active {
+		opacity: 0.01;
+		max-height: 0;
+		transition: max-height 0.25s, padding 0.25s, opacity 0.15s;
+	}
 }
