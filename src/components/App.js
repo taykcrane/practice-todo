@@ -17,9 +17,9 @@ class App extends React.Component {
 
     this.state = {
       todos: [
-        { id: 1, todo: "So many bugs", owner: "Taylor", isEditing: false },
-        { id: 2, todo: "So little time!", owner: "Sönke", isEditing: false },
-        { id: 3, todo: "Need more asparagus filet", owner: "Matteo", isEditing: false },
+        { id: 1, todo: "So many bugs", owner: "Taylor" },
+        { id: 2, todo: "So little time!", owner: "Sönke" },
+        { id: 3, todo: "Need more asparagus filet", owner: "Matteo" },
       ],
       completedTodos: [{ todo: "App keeps crashing", owner: "Joe" }],
       showCompleted: false,
@@ -47,7 +47,6 @@ class App extends React.Component {
       todo: newTodo,
       owner: newOwner,
       id: timestamp,
-      isEditing: false,
     });
     this.setState({
       todos: todos,
