@@ -1,0 +1,78 @@
+// Concern List Item functionality
+// Concern List Item functionality
+// Concern List Item functionality
+// Concern List Item functionality
+
+.concern-container {
+	height: 18px;
+	padding: 10px 0;
+}
+
+.concern-item {
+	display: inline-block;
+}
+
+.edit-concern-container {
+	height: 18px;
+	padding: 10px 0;
+	background-color: #eee;
+	transform: translateY(-1px);
+
+	form {
+		height: 18px;
+	}
+
+	input,
+	button {
+		padding: 0;
+		border: none;
+		font-size: 16px;
+		font-family: sans-serif;
+		height: 18px;
+		background-color: #eee;
+	}
+}
+
+.concern-name,
+.concern-owner,
+.concern-name-edit,
+.concern-owner-edit {
+	color: #666;
+}
+
+.concern-name,
+.concern-name-edit {
+	width: 75%;
+}
+
+.concern-owner,
+.concern-owner-edit {
+	width: 15%;
+}
+
+.concern-complete {
+	width: 5%;
+}
+
+.concern-complete,
+.concern-edit {
+	text-align: center;
+	color: #aaa;
+}
+
+.concern-edit,
+.concern-update-edit {
+	width: 5%;
+}
+
+.concern-complete {
+	.fa-circle-thin {
+		cursor: pointer;
+		padding: 0px 20%;
+		transition: color 200ms;
+
+		&:hover {
+			color: #00ff99;
+		}
+	}
+}
