@@ -74,7 +74,7 @@ class TodoList extends React.Component {
                             Add Concern
                         </button>
                     </form>
-                    {this.state.emptyConcernError && <p className="emptyConcernError">You must enter a concern first!</p>}
+                    {this.state.emptyConcernError && <p className="empty-concern-error">You must enter a concern first!</p>}
                 </div>
                 <div className="concerns-list">
                     <CSSTransitionGroup component="ul" transitionName="concern-transition" transitionEnterTimeout={250} transitionLeaveTimeout={250}>
