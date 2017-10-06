@@ -16,13 +16,27 @@ class App extends React.Component {
 
     this.state = {
       todos: [
-        { id: 1, todo: "So many bugs", owner: "Taylor", isEditing: false },
-        { id: 2, todo: "So little time!", owner: "Sönke", isEditing: false },
-        { id: 3, todo: "Need more asparagus filet", owner: "Matteo", isEditing: false },
+        { id: 1, todo: "So many bugs", owner: "Taylor" },
+        { id: 2, todo: "So little time!", owner: "Sönke" },
+        { id: 3, todo: "Need more asparagus filet", owner: "Matteo" },
       ],
       completedTodos: [{ todo: "App keeps crashing", owner: "Joe" }],
       showCompleted: false,
     };
+  }
+
+  componentWillMount() {
+    base.syncState(`/todos/`, {
+      context: this,
+      state: "todos",
+      asArray: true,
+    });
+
+    base.syncState(`/completed-todos/`, {
+      context: this,
+      state: "completedTodos",
+      asArray: true,
+    });
   }
 
   addTodo(newTodo, newOwner) {
@@ -43,7 +57,7 @@ class App extends React.Component {
 
     var todos = [...this.state.todos];
     todos.map(item => {
-      item.isEditing = false;
+      return (item.isEditing = false);
     });
 
     var todo = todos[index];
