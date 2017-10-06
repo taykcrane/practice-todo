@@ -2,6 +2,7 @@ import React from "react";
 import taylor from "../taylor.jpg";
 import "../normalize.css";
 import "./App.css";
+import base from "../base.js";
 import TodoList from "./TodoList.js";
 import CompletedTodos from "./CompletedTodos.js";
 
