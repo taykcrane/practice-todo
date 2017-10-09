@@ -81,8 +81,9 @@ class TodoList extends React.Component {
                         {this.props.todos.map((item, index) => (
                             <TodoListItem
                                 commitEdit={this.props.commitEdit}
-                                editTodo={this.props.editTodo}
                                 completeTodo={this.props.completeTodo}
+                                currentlyEditing={this.props.currentlyEditing}
+                                setCurrentlyEditing={this.props.setCurrentlyEditing}
                                 item={item}
                                 index={index}
                                 key={item.id}
