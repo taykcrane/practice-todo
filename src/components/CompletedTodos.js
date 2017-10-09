@@ -1,20 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./CompletedTodos.css";
+import TodoListItem from "./TodoListItem.js";
 
 class CompletedTodos extends React.Component {
 	render() {
 		var completedTodos = this.props.completedTodos.map((item, index) => {
 			if (this.props.showCompleted) {
-				return <li key={index}>{item.todo}</li>;
+				return <TodoListItem item={item} index={index} key={item.id} />;
 			}
 		});
 
 		return (
-			<div className="completed">
-				<p className="show-completed" onClick={this.props.toggleShowCompletedState}>
+			<div className="completed-concerns-container">
+				<span className="completed-concerns-link" onClick={this.props.toggleShowCompletedState}>
 					Show Completed Concerns?
-				</p>
-				<ul>{completedTodos}</ul>
+				</span>
+				<ul className="completed-concerns-list">{completedTodos}</ul>
 			</div>
 		);
 	}

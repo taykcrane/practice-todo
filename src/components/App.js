@@ -17,9 +17,9 @@ class App extends React.Component {
 
     this.state = {
       todos: [
-        { id: 1, todo: "So many bugs", owner: "Taylor" },
-        { id: 2, todo: "So little time!", owner: "Sönke" },
-        { id: 3, todo: "Need more asparagus filet", owner: "Matteo" },
+        { id: 1, todo: "So many bugs", owner: "Taylor", createdAt: 0 },
+        { id: 2, todo: "So little time!", owner: "Sönke", createdAt: 0 },
+        { id: 3, todo: "Need more asparagus filet", owner: "Matteo", createdAt: 0 },
       ],
       completedTodos: [{ todo: "App keeps crashing", owner: "Joe" }],
       showCompleted: false,
