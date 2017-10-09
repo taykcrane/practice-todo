@@ -12,7 +12,6 @@ class App extends React.Component {
 
     this.addTodo = this.addTodo.bind(this);
     this.completeTodo = this.completeTodo.bind(this);
-    this.editTodo = this.editTodo.bind(this);
     this.toggleShowCompletedState = this.toggleShowCompletedState.bind(this);
 
     this.state = {
@@ -23,6 +22,7 @@ class App extends React.Component {
       ],
       completedTodos: [{ todo: "App keeps crashing", owner: "Joe" }],
       showCompleted: false,
+      currentlyEditing: null,
     };
   }
 
@@ -53,21 +53,11 @@ class App extends React.Component {
     });
   }
 
-  editTodo(index) {
-    console.log("todo is being edited");
-
-    var todos = [...this.state.todos];
-    todos.map(item => {
-      return (item.isEditing = false);
-    });
-
-    var todo = todos[index];
-    todo.isEditing = true;
-
+  setCurrentlyEditing = id => {
     this.setState({
-      todos: todos,
+      currentlyEditing: id,
     });
-  }
+  };
 
   commitEdit = (index, updatedTodo, updatedOwner) => {
     var todos = [...this.state.todos];
@@ -114,9 +104,10 @@ class App extends React.Component {
         <TodoList
           todos={this.state.todos}
           addTodo={this.addTodo}
-          editTodo={this.editTodo}
           completeTodo={this.completeTodo}
           commitEdit={this.commitEdit}
+          currentlyEditing={this.state.currentlyEditing}
+          setCurrentlyEditing={this.setCurrentlyEditing}
         />
 
         <CompletedTodos
