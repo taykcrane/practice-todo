@@ -36,6 +36,7 @@
 
 .concern-name,
 .concern-owner,
+.concern-created-at,
 .concern-name-edit,
 .concern-owner-edit {
 	color: #666;
@@ -43,12 +44,17 @@
 
 .concern-name,
 .concern-name-edit {
-	width: 75%;
+	width: 65%;
 }
 
 .concern-owner,
 .concern-owner-edit {
 	width: 15%;
+}
+
+.concern-created-at {
+	width: 10%;
+	text-align: center;
 }
 
 .concern-complete {
