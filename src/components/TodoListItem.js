@@ -1,95 +1,98 @@
 import React from "react";
+import Moment from "react-moment";
 import "./TodoListItem.css";
 
 export default class TodoListItem extends React.Component {
-	constructor() {
-		super();
+  constructor() {
+    super();
 
-		this.state = {
-			updatedTodo: "",
-			updatedOwner: "",
-		};
-	}
+    this.state = {
+      updatedTodo: "",
+      updatedOwner: "",
+    };
+  }
 
-	handleEditTodo = (event, index) => {
-		event.preventDefault();
-		var updatedTodo = this.state.updatedTodo;
-		var updatedOwner = this.state.updatedOwner;
-		this.props.commitEdit(index, updatedTodo, updatedOwner);
-		this.setState({
-			updatedTodo: "",
-			updatedOwner: "",
-		});
-	};
+  handleEditTodo = (event, index) => {
+    event.preventDefault();
+    var updatedTodo = this.state.updatedTodo;
+    var updatedOwner = this.state.updatedOwner;
+    this.props.commitEdit(index, updatedTodo, updatedOwner);
+    this.setState({
+      updatedTodo: "",
+      updatedOwner: "",
+    });
+  };
 
-	handleEditTodoChange = event => {
-		var updatedTodo = event.target.value;
-		this.setState({
-			updatedTodo: updatedTodo,
-		});
-	};
+  handleEditTodoChange = event => {
+    var updatedTodo = event.target.value;
+    this.setState({
+      updatedTodo: updatedTodo,
+    });
+  };
 
-	handleEditOwnerChange = event => {
-		var updatedOwner = event.target.value;
-		this.setState({
-			updatedOwner: updatedOwner,
-		});
-	};
+  handleEditOwnerChange = event => {
+    var updatedOwner = event.target.value;
+    this.setState({
+      updatedOwner: updatedOwner,
+    });
+  };
 
-	handleEditTodoButtonClick = (item, index) => {
-		this.props.editTodo(index);
-		this.setState({
-			updatedTodo: item.todo,
-			updatedOwner: item.owner,
-		});
+  handleEditTodoButtonClick = (item, index) => {
+    this.props.editTodo(index);
+    this.setState({
+      updatedTodo: item.todo,
+      updatedOwner: item.owner,
+    });
 
-		setTimeout(() => this.concernFieldInput.focus(), 0);
-	};
+    setTimeout(() => this.concernFieldInput.focus(), 0);
+  };
 
-	renderReadOrEdit = (item, index) => {
-		var concernCompleteButton = (
-			<span className="concern-item concern-complete">
-				<span className="fa fa-circle-thin" style={{ fontSize: "14px" }} onClick={() => this.props.completeTodo(index)} />
-			</span>
-		);
+  renderReadOrEdit = (item, index) => {
+    var concernCompleteButton = (
+      <span className="concern-item concern-complete">
+        <span className="fa fa-circle-thin" style={{ fontSize: "14px" }} onClick={() => this.props.completeTodo(index)} />
+      </span>
+    );
 
-		if (item.isEditing) {
-			return (
-				<div className="edit-concern-container">
-					<form>
-						{concernCompleteButton}
-						<input
-							className="concern-name-edit"
-							value={this.state.updatedTodo}
-							onChange={this.handleEditTodoChange}
-							ref={input => {
-								this.concernFieldInput = input;
-							}}
-						/>
-						<input className="concern-owner-edit" value={this.state.updatedOwner} onChange={this.handleEditOwnerChange} />
-						<span className="concern-item concern-created-at">{item.createdAt}</span>
-						<button className="concern-update-edit" onClick={event => this.handleEditTodo(event, index)}>
-							Update
-						</button>
-					</form>
-				</div>
-			);
-		} else {
-			return (
-				<div className="concern-container">
-					{concernCompleteButton}
-					<span className="concern-item concern-name">{item.todo}</span>
-					<span className="concern-item concern-owner">{item.owner ? `Owner: ${item.owner}` : null}</span>
-					<span className="concern-item concern-created-at">{item.createdAt}</span>
-					<span className="concern-item concern-edit" onClick={() => this.handleEditTodoButtonClick(item, index)}>
-						(edit)
-					</span>
-				</div>
-			);
-		}
-	};
+    if (item.isEditing) {
+      return (
+        <div className="edit-concern-container">
+          <form>
+            {concernCompleteButton}
+            <input
+              className="concern-name-edit"
+              value={this.state.updatedTodo}
+              onChange={this.handleEditTodoChange}
+              ref={input => {
+                this.concernFieldInput = input;
+              }}
+            />
+            <input className="concern-owner-edit" value={this.state.updatedOwner} onChange={this.handleEditOwnerChange} />
+            <span className="concern-item concern-created-at">{item.createdAt}</span>
+            <button className="concern-update-edit" onClick={event => this.handleEditTodo(event, index)}>
+              Update
+            </button>
+          </form>
+        </div>
+      );
+    } else {
+      return (
+        <div className="concern-container">
+          {concernCompleteButton}
+          <span className="concern-item concern-name">{item.todo}</span>
+          <span className="concern-item concern-owner">{item.owner ? `Owner: ${item.owner}` : null}</span>
+          <span className="concern-item concern-created-at">
+            <Moment format="MMM D">{item.createdAt}</Moment>
+          </span>
+          <span className="concern-item concern-edit" onClick={() => this.handleEditTodoButtonClick(item, index)}>
+            (edit)
+          </span>
+        </div>
+      );
+    }
+  };
 
-	render() {
-		return <li>{this.renderReadOrEdit(this.props.item, this.props.index)}</li>;
-	}
+  render() {
+    return <li>{this.renderReadOrEdit(this.props.item, this.props.index)}</li>;
+  }
 }
