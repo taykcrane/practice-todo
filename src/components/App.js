@@ -47,6 +47,7 @@ class App extends React.Component {
       todo: newTodo,
       owner: newOwner,
       id: timestamp,
+      createdAt: timestamp,
     });
     this.setState({
       todos: todos,

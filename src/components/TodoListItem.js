@@ -1,4 +1,5 @@
 import React from "react";
+import Moment from "react-moment";
 import "./TodoListItem.css";
 
 export default class TodoListItem extends React.Component {
@@ -69,6 +70,9 @@ export default class TodoListItem extends React.Component {
               }}
             />
             <input className="concern-owner-edit" value={this.state.updatedOwner} onChange={this.handleEditOwnerChange} />
+            <span className="concern-created-at">
+              <Moment format="MMM D">{item.createdAt}</Moment>
+            </span>
             <button className="concern-update-edit" onClick={event => this.handleEditTodo(event, index)}>
               Update
             </button>
@@ -81,6 +85,9 @@ export default class TodoListItem extends React.Component {
           {concernCompleteButton}
           <span className="concern-item concern-name">{item.todo}</span>
           <span className="concern-item concern-owner">{item.owner ? `Owner: ${item.owner}` : null}</span>
+          <span className="concern-item concern-created-at">
+            <Moment format="MMM D">{item.createdAt}</Moment>
+          </span>
           <span className="concern-item concern-edit" onClick={() => this.handleSetCurrentlyEditing(item)}>
             (edit)
           </span>
