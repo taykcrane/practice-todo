@@ -56,6 +56,18 @@ export default class TodoListItem extends React.Component {
       </span>
     );
 
+    var concernEditButton = isCompleted => {
+      if (!isCompleted) {
+        return (
+          <span className="concern-item concern-edit" onClick={() => this.handleSetCurrentlyEditing(item)}>
+            (edit)
+          </span>
+        );
+      } else {
+        return null;
+      }
+    };
+
     if (this.props.currentlyEditing === item.id) {
       return (
         <div className="edit-concern-container">
@@ -88,9 +100,7 @@ export default class TodoListItem extends React.Component {
           <span className="concern-item concern-created-at">
             <Moment format="MMM D">{item.createdAt}</Moment>
           </span>
-          <span className="concern-item concern-edit" onClick={() => this.handleSetCurrentlyEditing(item)}>
-            (edit)
-          </span>
+          {concernEditButton(this.props.isCompleted)}
         </div>
       );
     }

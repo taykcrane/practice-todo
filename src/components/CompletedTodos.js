@@ -7,7 +7,7 @@ class CompletedTodos extends React.Component {
 	render() {
 		var completedTodos = this.props.completedTodos.map((item, index) => {
 			if (this.props.showCompleted) {
-				return <TodoListItem item={item} index={index} key={item.id} />;
+				return <TodoListItem item={item} index={index} key={item.id} isCompleted={true} />;
 			}
 		});
 
