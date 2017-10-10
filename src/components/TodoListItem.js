@@ -17,6 +17,7 @@ export default class TodoListItem extends React.Component {
     var updatedTodo = this.state.updatedTodo;
     var updatedOwner = this.state.updatedOwner;
     this.props.commitEdit(index, updatedTodo, updatedOwner);
+    this.props.setCurrentlyEditing(null);
     this.setState({
       updatedTodo: "",
       updatedOwner: "",
@@ -37,8 +38,9 @@ export default class TodoListItem extends React.Component {
     });
   };
 
-  handleEditTodoButtonClick = (item, index) => {
-    this.props.editTodo(index);
+  handleSetCurrentlyEditing = item => {
+    this.props.setCurrentlyEditing(item.id);
+
     this.setState({
       updatedTodo: item.todo,
       updatedOwner: item.owner,
@@ -54,7 +56,7 @@ export default class TodoListItem extends React.Component {
       </span>
     );
 
-    if (item.isEditing) {
+    if (this.props.currentlyEditing === item.id) {
       return (
         <div className="edit-concern-container">
           <form>
@@ -86,7 +88,7 @@ export default class TodoListItem extends React.Component {
           <span className="concern-item concern-created-at">
             <Moment format="MMM D">{item.createdAt}</Moment>
           </span>
-          <span className="concern-item concern-edit" onClick={() => this.handleEditTodoButtonClick(item, index)}>
+          <span className="concern-item concern-edit" onClick={() => this.handleSetCurrentlyEditing(item)}>
             (edit)
           </span>
         </div>
