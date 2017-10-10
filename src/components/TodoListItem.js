@@ -68,7 +68,9 @@ export default class TodoListItem extends React.Component {
               }}
             />
             <input className="concern-owner-edit" value={this.state.updatedOwner} onChange={this.handleEditOwnerChange} />
-            <span className="concern-item concern-created-at">{item.createdAt}</span>
+            <span className="concern-created-at">
+              <Moment format="MMM D">{item.createdAt}</Moment>
+            </span>
             <button className="concern-update-edit" onClick={event => this.handleEditTodo(event, index)}>
               Update
             </button>
