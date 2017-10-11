@@ -1,0 +1,23 @@
+/*Adding and removing concerns transitions*/
+/*Adding and removing concerns transitions*/
+/*Adding and removing concerns transitions*/
+/*Adding and removing concerns transitions*/
+.concern-transition-enter {
+  opacity: 0.01;
+  max-height: 0;
+}
+.concern-transition-enter.concern-transition-enter-active {
+  opacity: 1;
+  max-height: 39px;
+  transition: all 0.25s;
+}
+
+.concern-transition-leave {
+  opacity: 1;
+  max-height: 39px;
+}
+.concern-transition-leave.concern-transition-leave-active {
+  opacity: 0.01;
+  max-height: 0;
+  transition: max-height 0.25s, padding 0.25s, opacity 0.15s;
+}
