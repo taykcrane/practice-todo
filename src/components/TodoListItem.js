@@ -51,19 +51,19 @@ export default class TodoListItem extends React.Component {
 
   renderReadOrEdit = (item, index) => {
     var concernCompleteButton = isCompleted => {
-      if (!isCompleted) {
-        return (
-          <span className="concern-item concern-complete">
+      return (
+        <span className="concern-item concern-complete">
+          {!isCompleted ? (
             <span className="fa fa-circle-thin concern-complete-circle" style={{ fontSize: "14px" }} onClick={() => this.props.completeTodo(index)} />
-          </span>
-        );
-      } else {
-        return (
-          <span className="concern-item concern-complete">
-            <span className="fa fa-check-circle-o concern-complete-circle" style={{ fontSize: "14px" }} />
-          </span>
-        );
-      }
+          ) : (
+            <span
+              className="fa fa-check-circle-o concern-complete-circle"
+              style={{ fontSize: "14px" }}
+              onClick={() => this.props.unCompleteTodo(index)}
+            />
+          )}
+        </span>
+      );
     };
 
     var concernEditButton = isCompleted => {
