@@ -60,6 +60,16 @@
 
 .concern-complete {
 	width: 5%;
+
+	.concern-complete-circle {
+		cursor: pointer;
+		padding: 0px 20%;
+		transition: color 200ms;
+
+		&:hover {
+			color: #00ff99;
+		}
+	}
 }
 
 .concern-complete,
@@ -71,16 +81,4 @@
 .concern-edit,
 .concern-update-edit {
 	width: 5%;
-}
-
-.concern-complete {
-	.fa-circle-thin {
-		cursor: pointer;
-		padding: 0px 20%;
-		transition: color 200ms;
-
-		&:hover {
-			color: #00ff99;
-		}
-	}
 }

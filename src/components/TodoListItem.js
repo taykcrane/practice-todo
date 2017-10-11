@@ -50,11 +50,21 @@ export default class TodoListItem extends React.Component {
   };
 
   renderReadOrEdit = (item, index) => {
-    var concernCompleteButton = (
-      <span className="concern-item concern-complete">
-        <span className="fa fa-circle-thin" style={{ fontSize: "14px" }} onClick={() => this.props.completeTodo(index)} />
-      </span>
-    );
+    var concernCompleteButton = isCompleted => {
+      if (!isCompleted) {
+        return (
+          <span className="concern-item concern-complete">
+            <span className="fa fa-circle-thin concern-complete-circle" style={{ fontSize: "14px" }} onClick={() => this.props.completeTodo(index)} />
+          </span>
+        );
+      } else {
+        return (
+          <span className="concern-item concern-complete">
+            <span className="fa fa-check-circle-o concern-complete-circle" style={{ fontSize: "14px" }} />
+          </span>
+        );
+      }
+    };
 
     var concernEditButton = isCompleted => {
       if (!isCompleted) {
@@ -94,7 +104,7 @@ export default class TodoListItem extends React.Component {
     } else {
       return (
         <div className="concern-container">
-          {concernCompleteButton}
+          {concernCompleteButton(this.props.isCompleted)}
           <span className="concern-item concern-name">{item.todo}</span>
           <span className="concern-item concern-owner">{item.owner ? `Owner: ${item.owner}` : null}</span>
           <span className="concern-item concern-created-at">
