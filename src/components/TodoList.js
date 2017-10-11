@@ -54,7 +54,23 @@ class TodoList extends React.Component {
     render() {
         return (
             <div>
+                <div className="concerns-list">
+                    <CSSTransitionGroup component="ul" transitionName="concern-transition" transitionEnterTimeout={250} transitionLeaveTimeout={250}>
+                        {this.props.todos.map((item, index) => (
+                            <TodoListItem
+                                commitEdit={this.props.commitEdit}
+                                completeTodo={this.props.completeTodo}
+                                currentlyEditing={this.props.currentlyEditing}
+                                setCurrentlyEditing={this.props.setCurrentlyEditing}
+                                item={item}
+                                index={index}
+                                key={item.id}
+                            />
+                        ))}
+                    </CSSTransitionGroup>
+                </div>
                 <div className="add-concern-container">
+                    {this.state.emptyConcernError && <p className="empty-concern-error">You must enter a concern first!</p>}
                     <form>
                         <input
                             className="add-concern-concern"
@@ -75,22 +91,6 @@ class TodoList extends React.Component {
                             Add Concern
                         </button>
                     </form>
-                    {this.state.emptyConcernError && <p className="empty-concern-error">You must enter a concern first!</p>}
-                </div>
-                <div className="concerns-list">
-                    <CSSTransitionGroup component="ul" transitionName="concern-transition" transitionEnterTimeout={250} transitionLeaveTimeout={250}>
-                        {this.props.todos.map((item, index) => (
-                            <TodoListItem
-                                commitEdit={this.props.commitEdit}
-                                completeTodo={this.props.completeTodo}
-                                currentlyEditing={this.props.currentlyEditing}
-                                setCurrentlyEditing={this.props.setCurrentlyEditing}
-                                item={item}
-                                index={index}
-                                key={item.id}
-                            />
-                        ))}
-                    </CSSTransitionGroup>
                 </div>
             </div>
         );

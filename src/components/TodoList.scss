@@ -4,7 +4,9 @@
 /*Add Concern Functionality*/
 
 .add-concern-container {
-	margin-bottom: 1em;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
 }
 
 .add-concern-concern,
@@ -13,23 +15,28 @@
 	font-size: 16px;
 	border: none;
 	padding: 1em 0;
+	color: #fff;
+
+	&::placeholder {
+		color: #fff;
+	}
 }
 
 .add-concern-concern {
 	width: 65%;
 	padding-left: 10%;
-	background-color: #eee;
+	background-color: #666;
 }
 
 .add-concern-owner {
 	width: 13%;
 	padding-left: 2%;
-	background-color: #eee;
+	background-color: #666;
 }
 
 .add-concern-button {
 	width: 10%;
-	background-color: #ddd;
+	background-color: #222;
 }
 
 // Concern List Functionality
@@ -57,31 +64,4 @@
 	color: red;
 	margin: 0;
 	font-size: 0.75em;
-}
-
-/*Adding and removing concerns transitions*/
-/*Adding and removing concerns transitions*/
-/*Adding and removing concerns transitions*/
-/*Adding and removing concerns transitions*/
-
-.concern-transition-enter {
-	opacity: 0.01;
-	max-height: 0;
-
-	&.concern-transition-enter-active {
-		opacity: 1;
-		max-height: 39px;
-		transition: all 0.25s;
-	}
-}
-
-.concern-transition-leave {
-	opacity: 1;
-	max-height: 39px;
-
-	&.concern-transition-leave-active {
-		opacity: 0.01;
-		max-height: 0;
-		transition: max-height 0.25s, padding 0.25s, opacity 0.15s;
-	}
 }
