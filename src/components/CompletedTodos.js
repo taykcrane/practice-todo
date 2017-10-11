@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { CSSTransitionGroup } from "react-transition-group";
 import "./CompletedTodos.css";
+import "./TodoListTransitions.css";
 import TodoListItem from "./TodoListItem.js";
 
 class CompletedTodos extends React.Component {
@@ -16,7 +18,15 @@ class CompletedTodos extends React.Component {
 				<span className="completed-concerns-link" onClick={this.props.toggleShowCompletedState}>
 					Show Completed Concerns?
 				</span>
-				<ul className="completed-concerns-list">{completedTodos}</ul>
+				<CSSTransitionGroup
+					component="ul"
+					className="completed-concerns-list"
+					transitionName="concern-transition"
+					transitionEnterTimeout={250}
+					transitionLeaveTimeout={250}
+				>
+					{completedTodos}
+				</CSSTransitionGroup>
 			</div>
 		);
 	}
