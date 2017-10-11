@@ -50,11 +50,33 @@ export default class TodoListItem extends React.Component {
   };
 
   renderReadOrEdit = (item, index) => {
-    var concernCompleteButton = (
-      <span className="concern-item concern-complete">
-        <span className="fa fa-circle-thin" style={{ fontSize: "14px" }} onClick={() => this.props.completeTodo(index)} />
-      </span>
-    );
+    var concernCompleteButton = isCompleted => {
+      return (
+        <span className="concern-item concern-complete">
+          {!isCompleted ? (
+            <span className="fa fa-circle-thin concern-complete-circle" style={{ fontSize: "14px" }} onClick={() => this.props.completeTodo(index)} />
+          ) : (
+            <span
+              className="fa fa-check-circle-o concern-complete-circle"
+              style={{ fontSize: "14px" }}
+              onClick={() => this.props.unCompleteTodo(index)}
+            />
+          )}
+        </span>
+      );
+    };
+
+    var concernEditButton = isCompleted => {
+      if (!isCompleted) {
+        return (
+          <span className="concern-item concern-edit" onClick={() => this.handleSetCurrentlyEditing(item)}>
+            (edit)
+          </span>
+        );
+      } else {
+        return null;
+      }
+    };
 
     if (this.props.currentlyEditing === item.id) {
       return (
@@ -82,15 +104,13 @@ export default class TodoListItem extends React.Component {
     } else {
       return (
         <div className="concern-container">
-          {concernCompleteButton}
+          {concernCompleteButton(this.props.isCompleted)}
           <span className="concern-item concern-name">{item.todo}</span>
           <span className="concern-item concern-owner">{item.owner ? `Owner: ${item.owner}` : null}</span>
           <span className="concern-item concern-created-at">
             <Moment format="MMM D">{item.createdAt}</Moment>
           </span>
-          <span className="concern-item concern-edit" onClick={() => this.handleSetCurrentlyEditing(item)}>
-            (edit)
-          </span>
+          {concernEditButton(this.props.isCompleted)}
         </div>
       );
     }

@@ -65,7 +65,6 @@ class App extends React.Component {
     var todo = todos[index];
     todo.todo = updatedTodo;
     todo.owner = updatedOwner;
-    todo.isEditing = false;
 
     this.setState({
       todos: todos,
@@ -86,6 +85,20 @@ class App extends React.Component {
       completedTodos: completedTodos,
     });
   }
+
+  unCompleteTodo = index => {
+    var completedTodos = [...this.state.completedTodos];
+    var completedTodo = completedTodos[index];
+    var todos = [...this.state.todos];
+
+    todos.push(completedTodo);
+    completedTodos.splice(index, 1);
+
+    this.setState({
+      todos: todos,
+      completedTodos: completedTodos,
+    });
+  };
 
   toggleShowCompletedState() {
     console.log("show completed toggled");
@@ -115,6 +128,7 @@ class App extends React.Component {
           completedTodos={this.state.completedTodos}
           showCompleted={this.state.showCompleted}
           toggleShowCompletedState={this.toggleShowCompletedState}
+          unCompleteTodo={this.unCompleteTodo}
         />
       </div>
     );
