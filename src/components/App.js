@@ -88,16 +88,11 @@ class App extends React.Component {
 
   unCompleteTodo = index => {
     var completedTodos = [...this.state.completedTodos];
-    console.log("completed todos: ", completedTodos);
     var completedTodo = completedTodos[index];
-    console.log("completed todo: ", completedTodo);
     var todos = [...this.state.todos];
-    console.log("todos: ", todos);
 
     todos.push(completedTodo);
-    console.log("todos: ", todos);
     completedTodos.splice(index, 1);
-    console.log("completed todos: ", completedTodos);
 
     this.setState({
       todos: todos,
