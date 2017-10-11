@@ -10,10 +10,6 @@ class App extends React.Component {
   constructor() {
     super();
 
-    this.addTodo = this.addTodo.bind(this);
-    this.completeTodo = this.completeTodo.bind(this);
-    this.toggleShowCompletedState = this.toggleShowCompletedState.bind(this);
-
     this.state = {
       todos: [
         { id: 1, todo: "So many bugs", owner: "Taylor", createdAt: 0 },
@@ -40,7 +36,7 @@ class App extends React.Component {
     });
   }
 
-  addTodo(newTodo, newOwner) {
+  addTodo = (newTodo, newOwner) => {
     var todos = [...this.state.todos];
     var timestamp = Date.now();
     todos.push({
@@ -52,7 +48,7 @@ class App extends React.Component {
     this.setState({
       todos: todos,
     });
-  }
+  };
 
   setCurrentlyEditing = id => {
     this.setState({
@@ -71,12 +67,12 @@ class App extends React.Component {
     });
   };
 
-  completeTodo(index) {
+  completeTodo = index => {
     var todos = [...this.state.todos];
     var todo = todos[index];
     var completedTodos = [...this.state.completedTodos];
 
-    completedTodos.push(todo);
+    completedTodos.unshift(todo);
 
     todos.splice(index, 1);
 
@@ -84,7 +80,7 @@ class App extends React.Component {
       todos: todos,
       completedTodos: completedTodos,
     });
-  }
+  };
 
   unCompleteTodo = index => {
     var completedTodos = [...this.state.completedTodos];
@@ -100,12 +96,12 @@ class App extends React.Component {
     });
   };
 
-  toggleShowCompletedState() {
+  toggleShowCompletedState = () => {
     console.log("show completed toggled");
     this.setState({
       showCompleted: !this.state.showCompleted,
     });
-  }
+  };
 
   render() {
     return (
