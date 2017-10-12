@@ -16,7 +16,7 @@ class CompletedTodos extends React.Component {
 		return (
 			<div className="completed-concerns-container">
 				<span className="completed-concerns-link" onClick={this.props.toggleShowCompletedState}>
-					Show Completed Concerns?
+					&or; Show Completed Concerns &or;
 				</span>
 				<CSSTransitionGroup
 					component="ul"

@@ -82,7 +82,7 @@ export default class TodoListItem extends React.Component {
       return (
         <div className="edit-concern-container">
           <form>
-            {concernCompleteButton}
+            {concernCompleteButton(this.props.isCompleted)}
             <input
               className="concern-name-edit"
               value={this.state.updatedTodo}

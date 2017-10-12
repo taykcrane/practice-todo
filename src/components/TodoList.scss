@@ -1,37 +1,3 @@
-/*Add Concern Functionality*/
-/*Add Concern Functionality*/
-/*Add Concern Functionality*/
-/*Add Concern Functionality*/
-
-.add-concern-container {
-	margin-bottom: 1em;
-}
-
-.add-concern-concern,
-.add-concern-owner,
-.add-concern-button {
-	font-size: 16px;
-	border: none;
-	padding: 1em 0;
-}
-
-.add-concern-concern {
-	width: 65%;
-	padding-left: 10%;
-	background-color: #eee;
-}
-
-.add-concern-owner {
-	width: 13%;
-	padding-left: 2%;
-	background-color: #eee;
-}
-
-.add-concern-button {
-	width: 10%;
-	background-color: #ddd;
-}
-
 // Concern List Functionality
 // Concern List Functionality
 // Concern List Functionality
@@ -40,16 +6,17 @@
 .concerns-list {
 	display: flex;
 	justify-content: center;
-	margin-bottom: 3em;
+	margin: 3em 0;
 
 	ul {
 		list-style-type: none;
 		width: 90%;
+		border-bottom: 1px solid #aaa;
 	}
 
 	li {
 		width: 100%;
-		border-bottom: 1px solid #aaa;
+		border-top: 1px solid #aaa;
 	}
 }
 
@@ -57,31 +24,47 @@
 	color: red;
 	margin: 0;
 	font-size: 0.75em;
+	text-align: center;
+	padding-bottom: 0.5em;
 }
 
-/*Adding and removing concerns transitions*/
-/*Adding and removing concerns transitions*/
-/*Adding and removing concerns transitions*/
-/*Adding and removing concerns transitions*/
+/*Add Concern Functionality*/
+/*Add Concern Functionality*/
+/*Add Concern Functionality*/
+/*Add Concern Functionality*/
 
-.concern-transition-enter {
-	opacity: 0.01;
-	max-height: 0;
+.add-concern-container {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
 
-	&.concern-transition-enter-active {
-		opacity: 1;
-		max-height: 39px;
-		transition: all 0.25s;
+.add-concern-concern,
+.add-concern-owner,
+.add-concern-button {
+	font-size: 16px;
+	border: none;
+	padding: 1em 0;
+	color: #fff;
+
+	&::placeholder {
+		color: #fff;
 	}
 }
 
-.concern-transition-leave {
-	opacity: 1;
-	max-height: 39px;
+.add-concern-concern {
+	width: 65%;
+	padding-left: 10%;
+	background-color: #666;
+}
 
-	&.concern-transition-leave-active {
-		opacity: 0.01;
-		max-height: 0;
-		transition: max-height 0.25s, padding 0.25s, opacity 0.15s;
-	}
+.add-concern-owner {
+	width: 13%;
+	padding-left: 2%;
+	background-color: #666;
+}
+
+.add-concern-button {
+	width: 10%;
+	background-color: #222;
 }

@@ -6,8 +6,12 @@
 }
 
 .completed-concerns-link {
-	text-decoration: underline;
 	cursor: pointer;
+	transition: color 200ms;
+
+	&:hover {
+		color: #00ff99;
+	}
 }
 
 .completed-concerns-list {
