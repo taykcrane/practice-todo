@@ -1,3 +1,33 @@
+// Concern List Functionality
+// Concern List Functionality
+// Concern List Functionality
+// Concern List Functionality
+
+.concerns-list {
+	display: flex;
+	justify-content: center;
+	margin: 3em 0;
+
+	ul {
+		list-style-type: none;
+		width: 90%;
+		border-bottom: 1px solid #aaa;
+	}
+
+	li {
+		width: 100%;
+		border-top: 1px solid #aaa;
+	}
+}
+
+.empty-concern-error {
+	color: red;
+	margin: 0;
+	font-size: 0.75em;
+	text-align: center;
+	padding-bottom: 0.5em;
+}
+
 /*Add Concern Functionality*/
 /*Add Concern Functionality*/
 /*Add Concern Functionality*/
@@ -37,31 +67,4 @@
 .add-concern-button {
 	width: 10%;
 	background-color: #222;
-}
-
-// Concern List Functionality
-// Concern List Functionality
-// Concern List Functionality
-// Concern List Functionality
-
-.concerns-list {
-	display: flex;
-	justify-content: center;
-	margin-bottom: 3em;
-
-	ul {
-		list-style-type: none;
-		width: 90%;
-	}
-
-	li {
-		width: 100%;
-		border-bottom: 1px solid #aaa;
-	}
-}
-
-.empty-concern-error {
-	color: red;
-	margin: 0;
-	font-size: 0.75em;
 }
