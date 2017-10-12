@@ -37,6 +37,29 @@
 	position: fixed;
 	bottom: 0;
 	width: 100%;
+	font-family: sans-serif;
+
+	form {
+		display: inline;
+	}
+}
+
+.kudos {
+	display: inline-block;
+	width: 18%;
+	font-size: 18px;
+	padding: 16px 0;
+	color: #fff;
+	text-align: center;
+	background-color: #222;
+
+	span {
+		padding-left: 4px;
+	}
+
+	&:hover {
+		cursor: pointer;
+	}
 }
 
 .add-concern-concern,
@@ -53,8 +76,8 @@
 }
 
 .add-concern-concern {
-	width: 65%;
-	padding-left: 10%;
+	width: 55%;
+	padding-left: 2%;
 	background-color: #666;
 }
 

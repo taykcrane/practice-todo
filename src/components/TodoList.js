@@ -10,11 +10,20 @@ class TodoList extends React.Component {
         super();
 
         this.state = {
+            kudosCount: 1,
             newTodo: "",
             newOwner: "",
             emptyConcernError: false,
         };
     }
+
+    handleIncrementKudos = () => {
+        var currentCount = this.state.kudosCount;
+        var newCount = currentCount + 1;
+        this.setState({
+            kudosCount: newCount,
+        });
+    };
 
     handleConcernChange = event => {
         var newTodo = event.target.value;
@@ -71,6 +80,11 @@ class TodoList extends React.Component {
                 </div>
                 <div className="add-concern-container">
                     {this.state.emptyConcernError && <p className="empty-concern-error">You must enter a concern first!</p>}
+                    <div className="kudos" onClick={this.handleIncrementKudos}>
+                        <i className="fa fa-trophy" />
+                        <span>Give Kudos: </span>
+                        <span>{this.state.kudosCount}</span>
+                    </div>
                     <form>
                         <input
                             className="add-concern-concern"
