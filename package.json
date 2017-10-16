@@ -11,6 +11,7 @@
     "npm": "^5.4.2",
     "npm-run-all": "^4.1.1",
     "prop-types": "^15.5.10",
+    "re-base": "3.0.5",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-moment": "^0.6.5",
