@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "firebase": "^4.5.0",
+    "firebaseui": "^2.4.0",
     "font-awesome": "^4.7.0",
     "install": "^0.10.1",
     "moment": "2.17.1",
