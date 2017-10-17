@@ -4,6 +4,14 @@ import firebaseui from "firebaseui";
 import base from "../base";
 
 class Auth extends React.Component {
+    constructor() {
+        super();
+
+        this.state = {
+            user: null,
+        };
+    }
+
     componentDidMount() {
         // FirebaseUI config.
         console.log("authentication started");
@@ -12,11 +20,7 @@ class Auth extends React.Component {
             signInOptions: [
                 // Leave the lines as is for the providers you want to offer your users.
                 firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-                firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-                firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-                firebase.auth.GithubAuthProvider.PROVIDER_ID,
                 firebase.auth.EmailAuthProvider.PROVIDER_ID,
-                firebase.auth.PhoneAuthProvider.PROVIDER_ID,
             ],
             // Terms of service url.
             tosUrl: "/tos/",
@@ -26,7 +30,27 @@ class Auth extends React.Component {
         const ui = new firebaseui.auth.AuthUI(firebase.auth(base.initializedApp));
         // The start method will wait until the DOM is loaded.
         ui.start("#firebaseui-auth-container", uiConfig);
+
+        var currentUid = null;
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                this.setState({ user });
+            } else {
+                console.log("no user account found!");
+            }
+        });
     }
+
+    logout = () => {
+        firebase
+            .auth()
+            .signOut()
+            .then(() => {
+                this.setState({
+                    user: null,
+                });
+            });
+    };
 
     render() {
         return (

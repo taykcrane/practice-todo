@@ -1,4 +1,5 @@
 import React from "react";
+import firebase from "firebase";
 import taylor from "../taylor.jpg";
 import "../normalize.css";
 import "./App.css";
@@ -19,6 +20,7 @@ class App extends React.Component {
       completedTodos: [{ todo: "App keeps crashing", owner: "Joe" }],
       showCompleted: false,
       currentlyEditing: null,
+      user: null,
     };
   }
 
