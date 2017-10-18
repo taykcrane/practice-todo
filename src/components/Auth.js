@@ -2,6 +2,8 @@ import React from "react";
 import firebase from "firebase";
 import firebaseui from "firebaseui";
 import base from "../base";
+import "./Auth.css";
+import "../../node_modules/firebaseui/dist/firebaseui.css";
 
 class Auth extends React.Component {
     constructor() {
@@ -53,11 +55,7 @@ class Auth extends React.Component {
     };
 
     render() {
-        return (
-            <div id="firebaseui-auth-container">
-                <h1>Hello auth!</h1>
-            </div>
-        );
+        return <div id="firebaseui-auth-container" className="auth-container" />;
     }
 }
 

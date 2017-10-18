@@ -1,0 +1,16 @@
+.auth-container {
+	.firebaseui-idp-google {
+		font-family: serif;
+		box-shadow: none;
+		border: 1px solid red;
+	}
+
+	.firebaseui-idp-password {
+		background-color: blue;
+		font-family: serif;
+
+		&:hover {
+			background-color: green;
+		}
+	}
+}
