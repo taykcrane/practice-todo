@@ -38,6 +38,12 @@ class App extends React.Component {
     });
   }
 
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(function(user) {
+      console.log(user);
+    });
+  }
+
   addTodo = (newTodo, newOwner) => {
     var todos = [...this.state.todos];
     var timestamp = Date.now();
