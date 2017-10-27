@@ -39,8 +39,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    firebase.auth().onAuthStateChanged(function(user) {
-      console.log(user);
+    firebase.auth().onAuthStateChanged(user => {
+      this.setState({
+        user: user,
+      });
     });
   }
 
@@ -111,12 +113,17 @@ class App extends React.Component {
     });
   };
 
+  logout = () => {
+    firebase.auth().signOut();
+  };
+
   render() {
     return (
       <div className="App">
         <div className="App-header">
           <img src={taylor} className="taylor" alt="logo" />
-          <h2>Welcome to my Retro board</h2>
+          {this.state.user && <h2>{`Welcome, ${this.state.user.email}`}</h2>}
+          <a onClick={this.logout}>Log out</a>
         </div>
 
         <TodoList

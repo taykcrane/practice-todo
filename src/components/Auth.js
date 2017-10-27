@@ -6,17 +6,7 @@ import "./Auth.css";
 import "../../node_modules/firebaseui/dist/firebaseui.css";
 
 class Auth extends React.Component {
-    constructor() {
-        super();
-
-        this.state = {
-            user: null,
-        };
-    }
-
     componentDidMount() {
-        // FirebaseUI config.
-        console.log("authentication started");
         const uiConfig = {
             signInSuccessUrl: "/retro/",
             signInOptions: [
@@ -27,20 +17,8 @@ class Auth extends React.Component {
             // Terms of service url.
             tosUrl: "/tos/",
         };
-
-        // Initialize the FirebaseUI Widget using Firebase.
-        const ui = new firebaseui.auth.AuthUI(firebase.auth(base.initializedApp));
-        // The start method will wait until the DOM is loaded.
-        ui.start("#firebaseui-auth-container", uiConfig);
-
-        var currentUid = null;
-        firebase.auth().onAuthStateChanged(user => {
-            if (user) {
-                this.setState({ user });
-            } else {
-                console.log("no user account found!");
-            }
-        });
+        console.log(this.props);
+        window.firebaseUI.start("#firebaseui-auth-container", uiConfig);
     }
 
     logout = () => {
