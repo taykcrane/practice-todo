@@ -14,6 +14,13 @@
   font-size: large;
 }
 
+.logout {
+  text-decoration: underline;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
