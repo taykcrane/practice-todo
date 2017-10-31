@@ -21,7 +21,6 @@ ReactDOM.render(
 		<Switch>
 			<Route exact path="/" component={Marketing} />
 			<PrivateRoute path="/retro" privateComponent={App} />
-			<Route path="/auth" component={Auth} />
 			<Route component={NotFound} />
 		</Switch>
 	</BrowserRouter>,
