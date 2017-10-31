@@ -1,4 +1,5 @@
 import React from "react";
+import firebase from "firebase";
 import taylor from "../taylor.jpg";
 import "../normalize.css";
 import "./App.css";
@@ -19,6 +20,7 @@ class App extends React.Component {
       completedTodos: [{ todo: "App keeps crashing", owner: "Joe" }],
       showCompleted: false,
       currentlyEditing: null,
+      user: null,
     };
   }
 
@@ -33,6 +35,14 @@ class App extends React.Component {
       context: this,
       state: "completedTodos",
       asArray: true,
+    });
+  }
+
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      this.setState({
+        user: user,
+      });
     });
   }
 
@@ -103,12 +113,17 @@ class App extends React.Component {
     });
   };
 
+  logout = () => {
+    firebase.auth().signOut();
+  };
+
   render() {
     return (
       <div className="App">
         <div className="App-header">
           <img src={taylor} className="taylor" alt="logo" />
-          <h2>Welcome to my Retro board</h2>
+          {this.state.user && <h2>{`Welcome, ${this.state.user.email}`}</h2>}
+          <a onClick={this.logout}>Log out</a>
         </div>
 
         <TodoList

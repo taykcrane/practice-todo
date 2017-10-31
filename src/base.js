@@ -1,7 +1,6 @@
 import Rebase from "re-base";
 import firebase from "firebase";
 
-console.log("firebase app initialized");
 var app = firebase.initializeApp({
 	apiKey: "AIzaSyBA0zz5vMcQcTlAvd2X-wn41rUxcI90txY",
 	authDomain: "practice-todo-4ff26.firebaseapp.com",
