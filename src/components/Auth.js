@@ -21,17 +21,6 @@ class Auth extends React.Component {
         window.firebaseUI.start("#firebaseui-auth-container", uiConfig);
     }
 
-    logout = () => {
-        firebase
-            .auth()
-            .signOut()
-            .then(() => {
-                this.setState({
-                    user: null,
-                });
-            });
-    };
-
     render() {
         return <div id="firebaseui-auth-container" className="auth-container" />;
     }
