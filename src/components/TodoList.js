@@ -61,23 +61,29 @@ class TodoList extends React.Component {
     };
 
     render() {
+        var concernsList = (
+            <div className="concerns-list">
+                <CSSTransitionGroup component="ul" transitionName="concern-transition" transitionEnterTimeout={250} transitionLeaveTimeout={250}>
+                    {this.props.todos.map((item, index) => (
+                        <TodoListItem
+                            commitEdit={this.props.commitEdit}
+                            completeTodo={this.props.completeTodo}
+                            currentlyEditing={this.props.currentlyEditing}
+                            setCurrentlyEditing={this.props.setCurrentlyEditing}
+                            item={item}
+                            index={index}
+                            key={item.id}
+                        />
+                    ))}
+                </CSSTransitionGroup>
+            </div>
+        );
+
+        var concernsZeroState = <p>Welcome! Enter a concern below to get started.</p>;
+
         return (
             <div>
-                <div className="concerns-list">
-                    <CSSTransitionGroup component="ul" transitionName="concern-transition" transitionEnterTimeout={250} transitionLeaveTimeout={250}>
-                        {this.props.todos.map((item, index) => (
-                            <TodoListItem
-                                commitEdit={this.props.commitEdit}
-                                completeTodo={this.props.completeTodo}
-                                currentlyEditing={this.props.currentlyEditing}
-                                setCurrentlyEditing={this.props.setCurrentlyEditing}
-                                item={item}
-                                index={index}
-                                key={item.id}
-                            />
-                        ))}
-                    </CSSTransitionGroup>
-                </div>
+                {this.props.todos.length > 0 ? concernsList : concernsZeroState}
                 <div className="add-concern-container">
                     {this.state.emptyConcernError && <p className="empty-concern-error">You must enter a concern first!</p>}
                     <div className="kudos" onClick={this.handleIncrementKudos}>

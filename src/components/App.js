@@ -17,32 +17,33 @@ class App extends React.Component {
         { id: 2, todo: "So little time!", owner: "Sönke", createdAt: 0 },
         { id: 3, todo: "Need more asparagus filet", owner: "Matteo", createdAt: 0 },
       ],
-      completedTodos: [{ todo: "App keeps crashing", owner: "Joe" }],
+      completedTodos: [],
       showCompleted: false,
       currentlyEditing: null,
       user: null,
     };
   }
 
-  componentWillMount() {
-    base.syncState(`/todos/`, {
-      context: this,
-      state: "todos",
-      asArray: true,
-    });
-
-    base.syncState(`/completed-todos/`, {
-      context: this,
-      state: "completedTodos",
-      asArray: true,
-    });
-  }
-
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
-      this.setState({
-        user: user,
-      });
+      this.setState(
+        {
+          user: user,
+        },
+        () => {
+          base.syncState(`${this.state.user.uid}/todos/`, {
+            context: this,
+            state: "todos",
+            asArray: true,
+          });
+
+          base.syncState(`${this.state.user.uid}/completed-todos/`, {
+            context: this,
+            state: "completedTodos",
+            asArray: true,
+          });
+        }
+      );
     });
   }
 
@@ -122,8 +123,10 @@ class App extends React.Component {
       <div className="App">
         <div className="App-header">
           <img src={taylor} className="taylor" alt="logo" />
-          {this.state.user && <h2>{`Welcome, ${this.state.user.email}`}</h2>}
-          <a onClick={this.logout}>Log out</a>
+          {this.state.user && <h2>{`Welcome, ${this.state.user.email}. userID=${this.state.user.uid}`}</h2>}
+          <a className="logout" onClick={this.logout}>
+            Log out
+          </a>
         </div>
 
         <TodoList
