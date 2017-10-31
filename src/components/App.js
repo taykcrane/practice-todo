@@ -122,11 +122,21 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={taylor} className="taylor" alt="logo" />
-          {this.state.user && <h2>{`Welcome, ${this.state.user.email}. userID=${this.state.user.uid}`}</h2>}
-          <a className="logout" onClick={this.logout}>
-            Log out
-          </a>
+          {this.state.user && (
+            <div>
+              <img
+                src={this.state.user.photoURL || "https://img.informer.com/articles_uploads/2/2094/Design%20Personal%20Logo%20Online.png"}
+                className="taylor"
+                alt="logo"
+              />
+              <h2>
+                Welcome, {this.state.user.email}. Your userID is: {this.state.user.uid}
+              </h2>
+              <a className="logout" onClick={this.logout}>
+                Log out
+              </a>
+            </div>
+          )}
         </div>
 
         <TodoList
