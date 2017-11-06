@@ -4,28 +4,28 @@
 // Concern List Functionality
 
 .concerns-list {
-	display: flex;
-	justify-content: center;
-	margin: 3em 0;
+    display: flex;
+    justify-content: center;
+    margin: 3em 0;
 
-	ul {
-		list-style-type: none;
-		width: 90%;
-		border-bottom: 1px solid #aaa;
-	}
+    ul {
+        list-style-type: none;
+        width: 90%;
+        border-bottom: 1px solid #aaa;
+    }
 
-	li {
-		width: 100%;
-		border-top: 1px solid #aaa;
-	}
+    li {
+        width: 100%;
+        border-top: 1px solid #aaa;
+    }
 }
 
 .empty-concern-error {
-	color: red;
-	margin: 0;
-	font-size: 0.75em;
-	text-align: center;
-	padding-bottom: 0.5em;
+    color: red;
+    margin: 0;
+    font-size: 0.75em;
+    text-align: center;
+    padding-bottom: 0.5em;
 }
 
 /*Add Concern Functionality*/
@@ -34,60 +34,61 @@
 /*Add Concern Functionality*/
 
 .add-concern-container {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-	font-family: sans-serif;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-family: sans-serif;
 
-	form {
-		display: inline;
-	}
+    form {
+        display: inline;
+    }
 }
 
 .kudos {
-	display: inline-block;
-	width: 18%;
-	font-size: 18px;
-	padding: 16px 0;
-	color: #fff;
-	text-align: center;
-	background-color: #222;
+    display: inline-block;
+    width: 18%;
+    font-size: 18px;
+    padding: 16px 0;
+    color: #fff;
+    text-align: center;
+    background-color: #222;
 
-	span {
-		padding-left: 4px;
-	}
+    span {
+        padding-left: 4px;
+    }
 
-	&:hover {
-		cursor: pointer;
-	}
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .add-concern-concern,
 .add-concern-owner,
 .add-concern-button {
-	font-size: 16px;
-	border: none;
-	padding: 1em 0;
-	color: #fff;
+    font-size: 16px;
+    border: none;
+    padding: 1em 0;
+    color: #fff;
 
-	&::placeholder {
-		color: #fff;
-	}
+    &::placeholder {
+        color: #fff;
+    }
 }
 
 .add-concern-concern {
-	width: 55%;
-	padding-left: 2%;
-	background-color: #666;
+    width: 55%;
+    padding-left: 2%;
+    background-color: #666;
 }
 
 .add-concern-owner {
-	width: 13%;
-	padding-left: 2%;
-	background-color: #666;
+    width: 13%;
+    padding-left: 2%;
+    background-color: #666;
 }
 
 .add-concern-button {
-	width: 10%;
-	background-color: #222;
+    width: 10%;
+    background-color: #222;
+    border-radius: 0;
 }
